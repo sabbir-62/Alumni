@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useNavigate  } from 'react-router-dom';
 import Cookies from "js-cookie";
-import './aboutPage.css'
+import './myAccount.css'
 
-const AboutPage = () => {
+const MyAccount = () => {
 
     const [state, setState] = useState({
         name: "",
@@ -14,7 +14,7 @@ const AboutPage = () => {
 
     const navigate = useNavigate(); // Call useNavigate as a function
 
-    const callAboutPage = async() => {
+    const myAccountPage = async() => {
         const cookie = Cookies.get("myCookie");
         const url = "https://alumni-psok.onrender.com/api/v1/about";
         // post data using fetch api
@@ -53,9 +53,15 @@ const AboutPage = () => {
       
     }
 
+    const handleClick = () => {
+        Cookies.remove("myCookie");
+        navigate('/login');
+        alert("Logout Success. Please Login")
+    }
+
 
     useEffect(() => {
-        callAboutPage();
+        myAccountPage();
     }, []); // Empty dependency array to run the effect once
 
     return (
@@ -98,9 +104,10 @@ const AboutPage = () => {
                         </ul>
                     </div>
                 </div>
+                <button className='btn btn-danger mt-3 ms-5' onClick={handleClick}>Logout</button>
             </div>    
         </div>
     );
 };
 
-export default AboutPage;
+export default MyAccount;

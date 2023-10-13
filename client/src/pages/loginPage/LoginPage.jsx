@@ -47,7 +47,7 @@ const LoginPage = () => {
                  if(data.success == true){
                     Cookies.set("myCookie", data.data);
                      //console.log("login", data.data);
-                     navigate('/');
+                     navigate('/my-account');
                  }
             }
             else{
@@ -66,7 +66,7 @@ const LoginPage = () => {
     }
     return (
         <>
-        <div className="registration">
+        <div className="login-page">
             <div className="container login">
                 <form className="login-form" method='POST' onSubmit={handleSubmit}>
                     <div className="form-group">
