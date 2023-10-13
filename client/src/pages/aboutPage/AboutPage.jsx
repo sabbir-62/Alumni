@@ -56,7 +56,7 @@ const AboutPage = () => {
 
     useEffect(() => {
         callAboutPage();
-    })
+    }, []); // Empty dependency array to run the effect once
 
     return (
         <div className="container about">
